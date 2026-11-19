@@ -1,0 +1,7 @@
+{
+  "nome": "Escritório Modelo Advocacia",
+  "cidade": "Cidade/UF",
+  "advogados": [["Nome do Advogado", "OAB/UF 00.000"], ["Nome da Advogada", "OAB/UF 00.001"]],
+  "endereco": "Rua Exemplo, 100 • Centro • Cidade – UF • CEP 00.000-000",
+  "contatos": "(00) 0 0000-0000 • contato@exemplo.adv.br"
+}

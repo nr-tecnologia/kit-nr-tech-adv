@@ -1,0 +1,18 @@
+{
+  "name": "kit-nr-tech-adv",
+  "version": "1.0.3",
+  "description": "Kit NR Tech Adv: as skills jurídicas do curso Dominando o Claude num único plugin. Anti-alucinação, anti-IA, Alma Jurídica, cronologia probatória, mapa de provas, petição em .docx, protocolo e conselho.",
+  "author": {
+    "name": "NR Tecnologia · Roney Ribeiro"
+  },
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "advocacia",
+    "juridico",
+    "peticao",
+    "anti-alucinacao",
+    "alma-juridica",
+    "dominando-o-claude"
+  ],
+  "homepage": "https://curso.tribujus.com.br"
+}
