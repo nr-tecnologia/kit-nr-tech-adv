@@ -1,7 +1,7 @@
 # Etapa Corrigir — Transformar correção em regra
 
 1. Localize `ALMA-*/MEMORIA.md`. Se não existir, diga que a Alma ainda não foi gerada e indique a etapa Gerar ("gerar minha alma").
-2. Leia a correção do advogado (o argumento do comando, ou a mensagem anterior a ele se veio sem argumento). Se não estiver claro o que deve mudar, faça **uma** pergunta curta. Ex.: "A regra é nunca usar 'data venia', ou só não abrir parágrafo com ela?"
+2. Leia a correção do advogado (a correção que ele acabou de indicar, ou a mensagem anterior se o pedido veio sem detalhe). Se não estiver claro o que deve mudar, faça **uma** pergunta curta. Ex.: "A regra é nunca usar 'data venia', ou só não abrir parágrafo com ela?"
 3. Reescreva a correção como regra operacional, curta e verificável:
    - Ruim: "Ele não gostou do tom."
    - Bom: "Nunca abrir pedido com 'Diante do exposto'. Usar 'Por tudo isso'."

@@ -4,7 +4,7 @@
 
 Leia `ALMA-*/entrevista-progresso.md`.
 
-- Se `blocos_concluidos` não tiver os 8 blocos (A a H): **não gere nada**. Diga quais blocos faltam e indique a etapa Continuar ("continuar minha alma"). Uma Alma com seção vazia é pior que nenhuma Alma, porque o DNA Jurídico vai preencher o vazio com texto genérico.
+- Se `blocos_concluidos` não tiver os 8 blocos (A a H): **não gere nada**. Diga quais blocos faltam e indique a etapa Continuar ("continuar minha alma"). Uma Alma com seção vazia é pior que nenhuma Alma, porque a redação da peça vai preencher o vazio com texto genérico.
 - Se não houver nenhuma peça `.docx` em `ALMA-*/pecas/`: avise que as seções 8 e 11 sairão como `[a extrair das peças]` e pergunte se ele quer gerar assim mesmo ou colocar as peças antes. Respeite a resposta.
 - Se houver apenas PDFs na pasta: diga que PDF não serve como base de extração e peça a versão `.docx`.
 

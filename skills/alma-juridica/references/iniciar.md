@@ -3,9 +3,7 @@
 ## Arquitetura
 
 - **Alma Jurídica** (este plugin) = captura da voz do advogado. Produz `ALMA.md`, `VOZ.md` e `MEMORIA.md`.
-- **DNA Jurídico** (outro plugin) = geração da peça, consumindo a Alma como lastro.
-
-Nunca confunda os dois nomes com o advogado. Aqui é **Alma**.
+- As skills `peticao` e `protocolo` deste plugin = geração da peça, usando a Alma como referência de voz.
 
 ## Passo 1 — Pasta de trabalho
 

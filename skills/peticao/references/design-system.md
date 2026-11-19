@@ -1,6 +1,6 @@
 # Design System — Petição (Kit NR Tech Adv)
 
-Padrão visual testado em peças reais. Todos os valores em DXA.
+Todos os valores em DXA.
 **Este arquivo é a fonte da verdade visual. Não improvisar.**
 
 ---
@@ -74,7 +74,7 @@ Tabela externa 8787 (invisível, tcMar 0) → tabela interna
 `gridCol: 2743 | 280 | 2742 | 280 | 2742` (as de 280 são espaçadoras vazias).
 `trPr: cantSplit`
 
-- Label: `sz 14 · bold · 0F4761 · tracking 120 · spacing{before:130, after:90, line:260} · keepLines`
+- Label: `sz 14 · bold · 0F4761 · tracking 60 · spacing{before:130, after:90, line:260} · keepLines`
 - Texto: `sz 18 · 1A1A1A · spacing{after:150, line:260} · keepLines`
 
 Rótulos usados: `A CONTROVÉRSIA` / `A TESE` / `O PEDIDO`.
@@ -116,10 +116,10 @@ A linha final pode ter o evento em **bold navy** para marcar o marco temporal.
 Tabela externa 8787 → interna `gridCol: 700 | 8087`. Coluna 1 vazia. **Sem bordas.**
 
 - Sigla do tribunal: `sz 14 · bold · 0F4761 · tracking 120 · ind{left:146} · spacing{before:120, after:80, line:260}`
-- Tese-síntese: `sz 21 · 0E2841 · jc both · ind{left:4, firstLine:142} · spacing{after:150, line:280}`
-- Itens numerados: `sz 19 · ind{left:146} · spacing{after:120, line:260}`, alternando
+- Tese-síntese: `sz 21 · 0E2841 · jc both · ind{left:146, right:120} · spacing{after:150, line:280}`
+- Itens numerados: `sz 19 · ind{left:146, right:120} · spacing{after:120, line:260}`, alternando
   `5F5A53` (texto) e `1A1A1A + bold` (trecho destacado)
-- Referência: `sz 16 · itálico · 5F5A53 · jc both · ind{left:146} · spacing{before:40, after:130, line:260}`
+- Referência: `sz 16 · itálico · 5F5A53 · jc both · ind{left:146, right:120} · spacing{before:40, after:130, line:260}`
 
 ### 4.12 Barra comparativa
 Tabela externa 8787 → interna `gridCol: 2500 | 3900 | 2387`, `trHeight 200`, `vAlign center`.
@@ -132,7 +132,8 @@ Abaixo da tabela, linha de fonte: `sz 16 · 5F5A53 · spacing{before:90, line:26
 
 ### 4.13 Cards de KPI
 Mesma grade da caixa-resumo (`2743 | 280 | 2742 | 280 | 2742`).
-- Label: `sz 14 · 0F4761 · tracking 120 · spacing{before:120, after:80, line:260}`
+- Duas fileiras: rótulos (`vAlign bottom`) e valores (`vAlign top`), para manter a linha de base única.
+- Label: `sz 14 · 0F4761 · tracking 60 · spacing{before:120, after:80, line:260}`
 - Valor: `sz 30` no primeiro card, `sz 26` nos demais · `spacing{after:130, line:260}`
   Cor `1A1A1A`, ou `0E2841` no card de destaque.
 
@@ -233,30 +234,16 @@ Regras de ritmo:
 
 ---
 
-## 5.1 Correções sobre o modelo-fonte
+## 5.1 Acabamento das grades
 
-O `peticao-modelo.docx` traz três defeitos de acabamento que a biblioteca corrige:
-
-1. **Filete duplo entre cartões.** O `insideV` da tabela interna desenha linha dos
-   dois lados da coluna espaçadora de 280, produzindo `‖`. Correção: `NOBORDERS`
-   na tabela e `tcBorders{left}` bege `CFCBC4` apenas nas células a partir da
-   segunda, com `tcMar{left:240}` de respiro.
-2. **Rótulos quebrando em duas linhas.** Tracking 120 estoura a largura de 2742
-   com rótulos de 12+ caracteres, desalinhando os valores entre colunas.
-   Correção: tracking **60** em rótulos de `resumo` e `kpi` (mantido 120 no
-   `callout`, que ocupa a largura inteira).
-3. **Valores em alturas diferentes.** Correção: `kpi` passou a ter **duas
-   fileiras** — rótulos (`vAlign bottom`) e valores (`vAlign top`) —, garantindo
-   linha de base única independentemente da quebra do rótulo.
-
-Além disso, a tese da caixa de jurisprudência usava `ind{left:4, firstLine:142}`,
-o que encostava a **segunda linha** no filete. Correção: `ind{left:146, right:120}`
-em tese, itens e referência.
+Caixa-resumo e cards de KPI: `NOBORDERS` na tabela e `tcBorders{left}` bege
+`CFCBC4` apenas nas células a partir da segunda, com `tcMar{left:240}` de
+respiro. Evita o filete duplo nas colunas espaçadoras de 280.
 
 ### Alinhamento automático
 
-Justificar bloco curto estica as palavras e denuncia acabamento ruim. A função
-`autoAlign` decide por contagem de caracteres, com limiares calibrados por bloco:
+Justificar bloco curto estica as palavras e denuncia acabamento ruim. O gerador
+decide por contagem de caracteres, com limiares calibrados por bloco:
 
 | Bloco | Limiar | Comportamento |
 |---|---|---|

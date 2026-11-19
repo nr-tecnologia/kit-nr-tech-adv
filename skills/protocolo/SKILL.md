@@ -1,13 +1,11 @@
 ---
 name: protocolo
-description: "Leva a peça processual do PDF integral dos autos até a versão pronta para protocolo, com prazo, análise, pesquisa de precedentes, redação e auditoria folha por folha, antes da revisão final do advogado."
+description: "Leva a peça processual do PDF integral dos autos até a versão pronta para protocolo: prazo, leitura folha a folha, pesquisa de precedentes, redação e auditoria de cada citação contra os autos, antes da revisão final do advogado. Use quando pedir prepara para protocolar, faz a peça a partir dos autos e confere, calcula o prazo e faz a peça, auditoria antes do protocolo. Para só montar ou formatar uma peça já definida, use peticao."
 ---
 
 # Protocolo: da íntegra dos autos à peça pronta para protocolar
 
-Versão do curso Dominando o Claude · NR Tecnologia · Roney Ribeiro.
-
-Esta skill nasceu de uma releitura fria. No caso de treino do curso (processo fictício de Ricardo Alves Moreira, aula 8.4), a peça parecia pronta e a revisão achou: a data da citação, que faltava para calcular o prazo; a inscrição de quem assina; uma palavra entre aspas que não estava no depoimento; e um precedente descrito além do que a ementa permitia afirmar. Tudo foi corrigido antes de a peça ser dada como pronta. A skill transforma aquele percurso em rotina.
+Esta skill nasceu de uma releitura fria. Num caso de treino fictício (réu R.), a peça parecia pronta e a revisão achou: a data da citação, que faltava para calcular o prazo; a inscrição de quem assina; uma palavra entre aspas que não estava no depoimento; e um precedente descrito além do que a ementa permitia afirmar. Tudo foi corrigido antes de a peça ser dada como pronta. A skill transforma aquele percurso em rotina.
 
 Os exemplos abaixo usam esse caso fictício: dois policiais que divergem no horário (14h e 16h), no local (km 32 e km 45), em quem estava na cabine e no volume da carga (28 m³ e 32 m³), e uma denúncia que pegou o horário de uma versão e o volume da outra.
 
@@ -19,11 +17,11 @@ Nada de "conferi por amostragem". Ou confere tudo, ou declara o que ficou sem co
 
 ## O que trabalha junto, nesta ordem
 
-1. A skill `anti-alucinacao` (do material do curso): roda por cima de tudo.
-2. A cronologia dos autos, com documento, folha e trecho literal (Módulo 7 e aula 9.1): na fase de leitura.
-3. O modelo de Word do projeto (aula 8.3): na montagem do .docx.
-4. A sua Alma Jurídica, se estiver na pasta (Módulo 6): na redação.
-5. O TribuJus, se estiver conectado: na pesquisa de precedentes. Sem ele, nenhum precedente entra na peça: fica a marca [PESQUISAR PRECEDENTE: tema].
+1. A skill `anti-alucinacao`: roda por cima de tudo.
+2. As skills `cronologia-probatoria` ou `mapa-de-provas`: na fase de leitura.
+3. A skill `peticao` e o `escritorio.json`: na montagem do .docx.
+4. A sua Alma Jurídica (skill `alma-juridica`), se estiver na pasta: na redação.
+5. Um conector de jurisprudência (ex.: TribuJus), se houver: na pesquisa de precedentes. Sem conector, pesquisar nos portais oficiais dos tribunais, com link para cada julgado. O que não for confirmado em fonte oficial fica como [PESQUISAR PRECEDENTE: tema].
 
 ---
 
@@ -34,9 +32,9 @@ Procurar na pasta do projeto o arquivo `protocolo-ficha.md`. Se não existir, fa
 1. **Área e tribunal**: em que área o escritório mais peticiona e em quais tribunais (o do caso, o de segundo grau, os superiores).
 2. **Órgãos julgadores**: as turmas ou câmaras que costumam julgar os casos do escritório.
 3. **Endereço das folhas**: como os autos desse tribunal numeram os documentos (por exemplo `Num. <ID> - Pág. <n>`, "fls.", "evento"). Pedir um exemplo copiado de um rodapé.
-4. **Quem assina**: a lista fechada de advogados, com nome completo e inscrição na OAB, e quem assina por padrão.
+4. **Quem assina**: ler do `escritorio.json` (skill `peticao`); se não existir, perguntar e criar. Registrar na ficha só quem assina por padrão.
 5. **Regras de prazo da área**: os prazos que o escritório mais usa e a forma de contagem, como o advogado as informa. Registrar ao lado de cada uma: "informada pelo advogado em <data>; conferir a redação vigente".
-6. **Modelo de Word**: o arquivo de modelo do projeto e o nome que vai nos metadados.
+6. **Formato da peça**: segue o design system da skill `peticao`; o nome do escritório vem do `escritorio.json`.
 
 A ficha é do advogado. A skill usa o que está nela e não completa nada de memória. Quando o advogado corrigir um dado, atualizar a ficha.
 
@@ -89,12 +87,14 @@ A skill não conhece suspensões de prazo nem feriados locais que não estejam n
 Processos eletrônicos costumam trazer no rodapé de cada folha o identificador do documento e a página (por exemplo `Num. <ID> - Pág. <n>`). Esse é o endereço que a peça vai citar. Construir o mapa antes de ler.
 
 ```bash
-mkdir -p $W && pdftotext -layout autos.pdf $W/autos.txt
+W=/tmp/protocolo-autos   # pasta de trabalho temporária; nunca dentro de autos/
+mkdir -p "$W" && pdftotext -layout autos.pdf "$W/autos.txt"
 ```
 
 ```python
 # clean.txt: uma página por bloco, sem linhas de assinatura eletrônica
-import re
+import re, os
+W='/tmp/protocolo-autos'
 t=open(f'{W}/autos.txt').read().split('\f')
 out=[]
 for i,p in enumerate(t):
@@ -134,19 +134,21 @@ Montar o quadro de divergências com uma coluna por documento e uma linha por po
 
 Produzir a cronologia e a lista de lacunas, cada linha com documento, página e trecho literal.
 
-## Fase 3: pesquisa de precedentes (TribuJus primeiro)
+## Fase 3: pesquisa de precedentes
+
+Com conector de jurisprudência (ex.: TribuJus), seguir os passos abaixo com as ferramentas dele. Sem conector, fazer as mesmas buscas nos portais oficiais e pular o passo 4 (jurimetria).
 
 1. `buscar_jurisprudencia`: uma busca por tese, no tribunal do caso, no de segundo grau e nos superiores (os da ficha). Ler o inteiro teor (`ler_julgado`) de tudo o que for citado. Respeitar o tipo de decisão: monocrática nunca vira acórdão, e sentença não é precedente de tribunal.
 2. Procurar julgado do **mesmo órgão julgador e do mesmo tipo de fato**. Serve para distinguir (o que lá havia e aqui falta) e para prever a reação do colegiado.
-3. Procurar ativamente o precedente **contrário** à tese. Se a tese não se sustenta nos tribunais superiores, dizer isso e descartá-la, ou enfrentá-la com distinção. Na aula 9.1 a pesquisa voltou contra a tese, e a peça citou o precedente contrário com a etiqueta e fez a distinção.
-4. `jurimetria` por eixo da peça, nestes recortes:
+3. Procurar ativamente o precedente **contrário** à tese. Se a tese não se sustenta nos tribunais superiores, dizer isso e descartá-la, ou enfrentá-la com distinção.
+4. Se houver conector com jurimetria, rodar por eixo da peça, nestes recortes:
    - o tribunal inteiro (classe + tese + últimos 5 anos);
    - cada órgão julgador da ficha;
    - o relator do órgão competente (filtro por parte do nome; se a amostra vier muito pequena, testar outra grafia do nome);
    - os tribunais superiores, por tese e por turma.
 5. Se a jurimetria estourar o tempo com o filtro de data, refazer sem a data e **declarar** que o recorte de 5 anos não foi aplicado.
 6. Reproduzir sempre: "X classificados de N", o recorte estrito e o amplo, a linha de base do órgão e todos os avisos da ferramenta. Nenhuma taxa vira probabilidade do caso.
-7. Só entra na peça o julgado que a ferramenta devolveu, com tribunal, número, data e link oficial. O que não foi encontrado fica como [PESQUISAR PRECEDENTE: tema]. Nunca completar número, data ou relator de memória. Não encontrar não significa que o precedente não exista: dizer o alcance da busca.
+7. Só entra na peça o julgado que a ferramenta devolveu ou que foi confirmado em fonte oficial, com tribunal, número, data e link oficial. O que não foi encontrado fica como [PESQUISAR PRECEDENTE: tema]. Nunca completar número, data ou relator de memória. Não encontrar não significa que o precedente não exista: dizer o alcance da busca.
 
 ## Fase 4: resumo analítico e aprovação
 
@@ -156,7 +158,7 @@ Antes de redigir, entregar em uma mensagem curta:
 - os vícios da decisão, do mais forte ao mais fraco, cada um com documento e página;
 - as teses descartadas e por quê;
 - os precedentes encontrados, a favor e contra;
-- o quadro de êxito e derrota por eixo, ancorado na jurimetria, com o tamanho da amostra ao lado de cada taxa;
+- se houve jurimetria, a taxa histórica por eixo com o tamanho da amostra ao lado (sem conector, omitir este item);
 - as perguntas que só o cliente ou o advogado respondem (no máximo 3);
 - **quem assina a peça** (ver abaixo).
 
@@ -176,7 +178,7 @@ Nomes e inscrições saem só da ficha ou do que o advogado digitar. Nunca presu
 
 ## Fase 5: redação
 
-No modelo de Word do projeto e pelas regras do escritório:
+Pelo design system da skill `peticao` e pelas regras do escritório:
 
 - tese mais forte primeiro; concessão honesta antes do ataque;
 - cada argumento parte de "no documento X, página Y, a decisão afirma...";
@@ -193,7 +195,8 @@ Montar o .docx, converter para PDF e conferir **todas** as páginas renderizadas
 ### 6.1 Toda citação entre aspas existe nos autos
 
 ```python
-import re, docx
+import re, os, docx   # python-docx: se faltar, pedir autorização antes de instalar
+W='/tmp/protocolo-autos'
 peca=' '.join(p.text for p in docx.Document('peca.docx').paragraphs)
 T=re.sub(r'\s+',' ',open(f'{W}/clean.txt').read()).lower()
 for q in re.findall(r'[“"](.+?)[”"]',peca):
@@ -208,7 +211,8 @@ O que der XX: ou está em página-imagem (conferir visualmente e registrar), ou 
 Localizador: recebe `[ID, pág, palavra-chave]` e mostra o trecho da página.
 
 ```python
-import re,sys,json
+import re,sys,json,os
+W='/tmp/protocolo-autos'
 L=open(f'{W}/clean.txt').read().split('\n'); pages=[];cur=[]
 for l in L:
     if l.startswith('=====PAG'):

@@ -1,6 +1,6 @@
 # Estruturas Jurídicas por Área — Endereçamento e Seções
 
-> **Convenção do padrão v2:** tópicos em **numeração arábica com travessão**
+> **Convenção:** tópicos em **numeração arábica com travessão**
 > (`1 — DOS FATOS`), subtópicos em decimal (`3.1 — ...`). Títulos descritivos,
 > não genéricos: preferir `2 — DA IDENTIFICAÇÃO DAS ESPÉCIES` a `2 — DO MÉRITO`.
 > As estruturas abaixo são esqueleto mínimo; a ordem real segue a hierarquia
@@ -10,14 +10,14 @@
 
 ### Endereçamento
 ```
-EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) DE DIREITO DA
+EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) DO TRABALHO DA
 __ VARA DO TRABALHO DE ____________ – __
 ```
 
 ### Recurso Ordinário (TRT)
 ```
 EXCELENTÍSSIMO(A) SENHOR(A) DESEMBARGADOR(A) RELATOR(A) DA
-__ TURMA DO TRIBUNAL REGIONAL DO TRABALHO DA 14ª REGIÃO
+__ TURMA DO TRIBUNAL REGIONAL DO TRABALHO DA __ª REGIÃO
 ```
 
 ### Estrutura — Reclamação Trabalhista (Inicial)
@@ -54,19 +54,19 @@ Valor da causa: R$ [VALOR]
 ### Endereçamento — Primeira Instância (Justiça Federal)
 ```
 EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA
-__ VARA FEDERAL DA SEÇÃO JUDICIÁRIA DE RONDÔNIA — SUBSEÇÃO DE __________
+__ VARA FEDERAL DA SEÇÃO JUDICIÁRIA DE ____________ — SUBSEÇÃO DE __________
 ```
 
 ### Endereçamento — Primeira Instância (Justiça Estadual)
 ```
 EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) DE DIREITO DA
-__ VARA CRIMINAL DA COMARCA DE ____________ – RO
+__ VARA CRIMINAL DA COMARCA DE ____________ – __
 ```
 
-### Endereçamento — TRF-1 (Recurso / HC)
+### Endereçamento — TRF (Recurso / HC)
 ```
 EXCELENTÍSSIMO(A) SENHOR(A) DESEMBARGADOR(A) FEDERAL RELATOR(A) DA
-__ TURMA DO TRIBUNAL REGIONAL FEDERAL DA 1ª REGIÃO
+__ TURMA DO TRIBUNAL REGIONAL FEDERAL DA __ª REGIÃO
 ```
 
 ### Endereçamento — STJ
@@ -123,7 +123,7 @@ __ TURMA DO SUPREMO TRIBUNAL FEDERAL
 4 — DA CONCLUSÃO
 ```
 
-### Estrutura — Defesa Administrativa (IBAMA / SEDAM / ICMBio)
+### Estrutura — Defesa Administrativa (IBAMA / órgão ambiental estadual / ICMBio)
 ```
 1 — DOS FATOS
 2 — DAS PRELIMINARES
@@ -175,11 +175,10 @@ EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA
 __ VARA FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE ____________
 ```
 
-### Endereçamento — TNU (Turma Nacional de Uniformização)
-```
-EXCELENTÍSSIMO(A) SENHOR(A) JUIZ(A) FEDERAL PRESIDENTE DA
-TURMA NACIONAL DE UNIFORMIZAÇÃO DOS JUIZADOS ESPECIAIS FEDERAIS
-```
+### Pedido de Uniformização Nacional (TNU)
+O pedido é interposto perante a Turma Recursal de origem, com as razões
+dirigidas à Turma Nacional de Uniformização. Conferir o endereçamento e o
+prazo no regimento interno da TNU vigente antes de redigir.
 
 ### Estrutura — Concessão de Benefício (Inicial)
 ```
@@ -222,13 +221,14 @@ Valor da causa: R$ [VALOR]
 
 ### Padrão (maioria das peças)
 ```
-Nestes termos, pede deferimento.
+Nestes termos,
+pede deferimento.
 ```
 
 ### Habeas Corpus
 ```
-Nestes termos, pede e espera deferimento, como medida
-da mais lídima e salutar JUSTIÇA!
+Nestes termos,
+pede deferimento.
 ```
 
 ### Recurso
@@ -245,7 +245,5 @@ Ante o exposto, confia no acolhimento das razões acima expostas.
 
 ## Local e Data
 
-Sempre usar:
-```
-[Cidade] – [UF], [dia] de [mês por extenso] de [ano].
-```
+Em processo eletrônico, usar "[Cidade/UF], data certificada pelo Sistema."
+(campo `cidade` do escritorio.json). Em peça física, data por extenso.

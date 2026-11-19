@@ -1,6 +1,6 @@
 ---
 name: mapa-de-provas
-description: Lê todos os PDFs da pasta autos/ do caso, com agentes em paralelo por grupo de prova, e salva em analise/mapa-de-provas.md a cronologia, cada fato com documento e folha, e a tabela do que não bate entre os documentos. Fecha com um resumo curto do que há de mais forte e dos pontos fracos do nosso lado. Use quando o usuário digitar /mapa-de-provas ou pedir "mapa de provas", "mapeia as provas", "o que os autos provam", "levanta as contradições dos autos".
+description: Lê todos os PDFs da pasta autos/ do caso, com agentes em paralelo por grupo de prova, e salva em analise/mapa-de-provas.md a cronologia, cada fato com documento e folha, e a tabela do que não bate entre os documentos. Fecha com um resumo curto do que há de mais forte e dos pontos fracos do nosso lado. Mapeamento rápido em Markdown, para trabalho interno. Use quando pedir "mapa de provas", "mapeia as provas", "o que os autos provam". Para cronologia formatada em .docx, com matriz de força probatória e mapa de testemunhas, use cronologia-probatoria.
 ---
 
 # Mapa de provas
@@ -13,7 +13,7 @@ Produz um arquivo: `analise/mapa-de-provas.md`, na pasta do caso em que a sessã
 2. **Todo fato vem com documento e folha.** Formato: `(nome do documento, fl. N)`. Sem prova nos autos, escreva "sem prova nos autos" e não afirme o fato.
 3. **Não presuma.** Não complete lacuna. Não deduza data, valor ou nome que não esteja escrito em documento. Trecho ilegível se registra como "ilegível", com a folha.
 4. **Não cite jurisprudência.** O mapa é de fatos e provas. Se um precedente fizer falta, deixe o marcador `[PESQUISAR PRECEDENTE: tema]`.
-5. **O CLAUDE.md do caso prevalece.** Leia-o antes de começar. Ele diz qual é o nosso lado e pode trazer regras de citação, de pasta e de redação. Se conflitar com esta skill, siga o CLAUDE.md.
+5. **O CLAUDE.md do caso prevalece.** Leia-o antes de começar. Ele diz qual é o nosso lado e pode trazer regras de citação, de pasta e de redação. Se conflitar com esta skill, siga o CLAUDE.md, salvo as regras 1 a 4 acima, que não cedem.
 6. **Português direto, frases curtas.**
 
 ## Passo 1. Preparar
@@ -45,7 +45,7 @@ Critérios:
 
 ## Passo 3. Leitura em paralelo
 
-Dispare um agente por grupo, todos na mesma mensagem, para rodarem em paralelo. Cada agente começa sem contexto. O pedido de cada um precisa conter:
+Dispare um agente por grupo, todos na mesma mensagem, para rodarem em paralelo. Se a ferramenta de agentes não estiver disponível, leia os grupos em sequência, com as mesmas regras. Cada agente começa sem contexto. O pedido de cada um precisa conter:
 
 - o caminho absoluto da pasta do caso e a lista dos PDFs do seu grupo;
 - qual é o nosso lado;

@@ -27,8 +27,8 @@ pdftoppm -jpeg -r 130 -f PAG -l PAG arquivo.pdf saida
 ```
 
 Nunca afirmar que um documento não existe, ou que nada consta dele, sem tê-lo
-aberto. Se não foi possível ler, usar formulação técnica — "as razões recursais
-não individualizam", "na ausência de demonstração a partir do ID X".
+aberto. Se não foi possível ler, dizer isso ao advogado e não afirmar nada
+sobre o conteúdo.
 
 **Verificar sempre se existe processo conexo em outro Estado ou esfera.** Exemplo
 fictício: o mesmo fato gera ação penal em um Estado e termo circunstanciado em
@@ -39,16 +39,20 @@ cliente for perguntado e enviar o segundo processo.
 
 ## 2. Jurisprudência — cobertura mínima
 
-Consultar o TribuJus em **três frentes**, não apenas uma:
+Pesquisar em **três frentes**, não apenas uma. Com conector de jurisprudência
+(ex.: TribuJus), consultar por ele; sem conector, nos portais oficiais dos
+tribunais, com link para cada julgado:
 
 | Frente | Por quê |
 |---|---|
-| **Tribunal do caso** | Tribunal competente. Define a probabilidade real. |
-| **TRF1** | Matéria ambiental, tributária e federal. Frequentemente traz a tese melhor construída. |
+| **Tribunal do caso** | Tribunal competente. Mostra como a matéria é julgada ali. |
+| **TRF ou TRT da região** | Matéria federal ou trabalhista. Frequentemente traz a tese melhor construída. |
 | **STJ** | Precedente-guia, sobretudo em consunção, dosimetria e nulidades. |
 
-Rodar também `jurimetria` para a estimativa de êxito, e registrar os avisos
-que o próprio sistema devolve (amostra pequena, divergência entre recortes).
+Se houver conector de jurimetria, rodar e registrar a taxa histórica do recorte
+com os avisos que o sistema devolve (amostra pequena, divergência entre
+recortes). Taxa histórica não é probabilidade do caso. Sem conector, não
+apresentar percentual.
 
 **Buscar por tese, não por tipo penal.** Consultas por "art. 299 CP" devolvem
 catálogo; consultas por "ausência de laudo pericial de identificação de espécie
@@ -92,8 +96,8 @@ não das datas mencionadas no corpo dos documentos.
 
 - [ ] Últimas páginas de todos os PDFs lidas
 - [ ] Documentos escaneados relevantes rasterizados e vistos
-- [ ] TribuJus consultado no tribunal do caso, no TRF/TRT da região e no STJ
-- [ ] Jurimetria rodada e avisos do sistema repassados ao usuário
+- [ ] Jurisprudência pesquisada no tribunal do caso, no TRF/TRT da região e no STJ
+- [ ] Se houve jurimetria, avisos do sistema repassados ao usuário
 - [ ] Todo julgado com número CNJ completo
 - [ ] Nenhuma aspas em precedente não conferido no inteiro teor
 - [ ] Aritmética conferida contra os documentos

@@ -10,9 +10,9 @@ Imprimir ou manter aberto durante revisão final da peça.
 - [ ] Zero `•` `●` `◦` `▪` `➤` (bullets decorativos)
 - [ ] Zero `→` `⇒` `↔` (setas)
 - [ ] Zero `…` (reticências unicode) — usar `...`
-- [ ] Zero `"` `"` `'` `'` (aspas curvas) — usar `"` `'`
+- [ ] Zero `“` `”` `‘` `’` (aspas curvas) — usar `"` `'`
 - [ ] Zero `#` `##` `###` (marcadores Markdown)
-- [ ] Zero `` ` `` (crases)
+- [ ] Zero `` ` `` (acentos graves de código)
 - [ ] Zero emojis
 
 ## Léxico (banidos)

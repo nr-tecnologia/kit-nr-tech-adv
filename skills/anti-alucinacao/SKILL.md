@@ -11,16 +11,15 @@ description: >
   administrativas, análises de caso, consultas. Cobre todas as áreas:
   criminal, cível, trabalhista, ambiental, tributário, previdenciário,
   administrativo, constitucional, eleitoral, consumerista. IMPÕE
-  verificação prévia em fontes oficiais e PROIBE invenção de citação
+  verificação prévia em fontes oficiais e PROÍBE invenção de citação
   mesmo sob prazo, em rascunhos ou "para argumentar". Use também em
   pedidos de "auditoria", "checagem" ou "revisão crítica" de peça já
   produzida.
 ---
 
-# 🛡️ RR-Anti-Alucinação — Protocolo de Verificação Jurídica
+# Anti-Alucinação — Protocolo de Verificação Jurídica
 
-> **Versão livre para uso do Colega Advogado.**
-> Adapte as áreas, tribunais e leis estaduais [entre colchetes] à sua realidade.
+> Os pontos [entre colchetes] se ajustam à área, aos tribunais e às leis estaduais de quem usa.
 
 ---
 
@@ -82,11 +81,10 @@ Para qualquer dado da Categoria B, **antes de escrevê-lo**, executar:
 [1] web_search com termos específicos do julgado/dispositivo
 [2] Tentar fonte primária: stj.jus.br, stf.jus.br, planalto.gov.br,
     sites oficiais de TJs/TRFs, DJe
-[3] Se a fonte primária não retornar: usar fontes secundárias
-    confiáveis (Migalhas, ConJur, Dizer o Direito, JusBrasil com
-    inteiro teor)
-[4] Triangular: cruzar pelo menos 2 fontes para confirmar
-[5] Se NÃO confirmar em 2 fontes → tratar como Categoria C (descartar)
+[3] Fontes secundárias (Migalhas, ConJur, Dizer o Direito, JusBrasil)
+    servem só para LOCALIZAR o julgado (número, órgão, data)
+[4] A confirmação é sempre na fonte oficial do tribunal ou no DJe
+[5] Se NÃO confirmar na fonte oficial → tratar como Categoria C (descartar)
 ```
 
 **Casos especiais:**
@@ -100,7 +98,7 @@ Para qualquer dado da Categoria B, **antes de escrevê-lo**, executar:
 Se um dado **não puder ser verificado**, há **3 opções legítimas**, em ordem de preferência:
 
 1. **Remover** integralmente a referência e construir o argumento sem ela
-2. **Generalizar** sem invocar precedente específico (ex: "é entendimento consolidado nos Tribunais Estaduais que..." — sem citar nº de processo inventado)
+2. **Construir o argumento** a partir do texto legal e dos fatos dos autos, sem atribuir entendimento a tribunal
 3. **Sinalizar como não verificado** ao usuário ANTES de incluir, perguntando explicitamente se ele tem a fonte
 
 **O que NÃO fazer:**
@@ -115,7 +113,7 @@ Se um dado **não puder ser verificado**, há **3 opções legítimas**, em orde
 **Antes de apresentar qualquer peça ou análise**, executar checklist mental:
 
 ```
-□ Cada cite tem número de processo verificado?
+□ Cada citação tem número de processo verificado?
 □ Cada Relator citado existe e é desse tribunal?
 □ Cada data de julgamento foi conferida?
 □ Cada artigo de lei foi conferido em fonte oficial?
@@ -214,8 +212,9 @@ Cálculos prescricionais são área de **risco máximo de erro**. Procedimento o
    - Pena > 8 e ≤ 12 anos → 16 anos
    - Pena > 4 e ≤ 8 anos → 12 anos
    - Pena > 2 e ≤ 4 anos → 8 anos
-   - Pena > 1 e ≤ 2 anos → 4 anos
-   - Pena ≤ 1 ano → 3 anos
+   - Pena ≥ 1 e ≤ 2 anos → 4 anos
+   - Pena < 1 ano → 3 anos
+   - Conferir também arts. 110 (pena aplicada) e 115 (redução pela idade) do CP
 4. **Identificar marcos interruptivos** (art. 117 CP)
 5. **Calcular intervalo entre cada marco** (sem somar — cada intervalo precisa caber no prazo)
 6. **Verificar prescrição em concreto/retroativa** (após trânsito para acusação): pela pena aplicada
@@ -243,7 +242,7 @@ Cálculos prescricionais são área de **risco máximo de erro**. Procedimento o
 **Certo:** verificar se o autor escreveu sobre o tema, em qual obra, qual edição. Se não achar → remover nome próprio.
 
 ### ❌ PADRÃO 4: "Súmula aproximada"
-**Errado:** "Conforme Súmula 481 do STJ..." (quando o número correto é outro).
+**Errado:** "Conforme Súmula n.º X do STJ..." (quando o número correto é outro).
 **Por quê:** Súmulas têm numeração rígida e texto fixo.
 **Certo:** copiar súmula literal de fonte oficial do tribunal.
 
@@ -289,7 +288,7 @@ Se qualquer linha falhar → **volta para revisão**.
 
 Mesmo com prazo apertado, **a prioridade é não inventar**, mesmo que isso signifique:
 
-1. Entregar peça mais curta (sem o cite duvidoso)
+1. Entregar peça mais curta (sem a citação duvidosa)
 2. Avisar o usuário que falta verificar X e perguntar se ele confirma
 3. Pedir mais tempo
 4. Entregar versão preliminar com marcação clara dos pontos não verificados
@@ -298,55 +297,15 @@ Mesmo com prazo apertado, **a prioridade é não inventar**, mesmo que isso sign
 
 ---
 
-## COMO INSTALAR ESTA SKILL
-
-### No Claude Desktop
-1. Baixe o arquivo `SKILL.md` que veio nesta pasta.
-2. Abra o Claude Desktop.
-3. Clique no botão **+** ao lado da caixa de mensagem.
-4. Vá em **Skills → Manage skills → Add**.
-5. Faça upload do arquivo (ou aponte para a pasta `anti-alucinacao/`).
-6. Ative a skill.
-
-### No Claude.ai (via Projeto)
-Se você usa Projetos, cole o conteúdo desta skill no campo **Instruções do Projeto**. Ela será aplicada automaticamente em toda conversa daquele projeto.
-
----
-
-## COMO TESTAR SE ESTÁ FUNCIONANDO
-
-Após instalar, faça este teste rápido — **sem** anexar documento nenhum:
-
-> "Me dá 3 acórdãos recentes do STJ sobre [tema específico da sua área]."
-
-**Resposta esperada (skill funcionando):** o Claude vai avisar que não pode fornecer sem verificar em fonte oficial, vai oferecer fazer web_search, e vai se recusar a inventar número de processo, Relator ou data.
-
-**Resposta problemática (skill não instalada ou não ativa):** o Claude entrega 3 acórdãos "prontos" com números, Relatores e datas sem consultar nada. Se isso acontecer, a skill não está ativa — reinstale.
-
----
-
-## COMO ADAPTAR À SUA REALIDADE
-
-Antes de usar em produção, personalize:
-
-- **[seu estado]** → substitua pelo estado onde você atua (ex: RO, SP, MG)
-- **Áreas do direito** → remova as áreas que você não trabalha (economiza tokens e foca a skill)
-- **Leis estaduais específicas** → acrescente as leis que você mais usa (ex: Lei Complementar estadual X, Regulamento Y da SEFA)
-- **Tribunais** → priorize os tribunais que você mais litiga (TJ do seu estado, TRF da sua região)
-
----
-
 ## FUNDAMENTO ÉTICO
 
 Esta skill não é apenas boa prática técnica — é dever ético do advogado.
 
 - **Art. 34, XIV, EOAB:** é infração deturpar o teor de dispositivo de lei, citação doutrinária ou de julgado.
-- **Art. 2º, VI, Código de Ética OAB:** o advogado deve zelar por sua reputação pessoal e profissional.
-- **Provimento OAB 205/2021:** transparência e veracidade nas informações prestadas.
+- **Código de Ética e Disciplina da OAB, art. 2º, parágrafo único, II e III:** atuar com veracidade, lealdade e boa-fé, e velar pela reputação pessoal e profissional.
 
 Uma citação inventada por i.a. não deixa de ser responsabilidade do advogado que assina a peça. **A i.a. é ferramenta — a responsabilidade profissional é sempre humana.**
 
 ---
 
-*Skill livre para uso e adaptação. Não é permitida revenda como produto próprio.*
-*Feedback e sugestões de melhoria são bem-vindos.*
+*Licença CC BY-NC 4.0 (veja o LICENSE do plugin).*

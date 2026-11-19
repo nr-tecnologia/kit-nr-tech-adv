@@ -1,20 +1,17 @@
 ---
 name: anti-ia
-description: "Protocolo para eliminar rastros de IA em qualquer texto jurídico produzido por advogado (petições, pareceres, recursos, memoriais, contestações, HC, MS, defesas, e-mails a clientes, contratos). Aciona-se SEMPRE que houver produção textual destinada a leitura humana profissional. Remove travessões longos e médios (— –), asteriscos, bullets decorativos (• ● ◦ ▪ → ✓), emojis, aspas curvas, reticências em caractere único, marcadores Markdown (# ## ###), setas e crases. Elimina vocabulário-denúncia de IA (\"é crucial\", \"é importante ressaltar\", \"navegar pelas complexidades\", \"robusto\", \"multifacetado\", \"holístico\", \"meticuloso\"). Proíbe estrutura em listas no corpo argumentativo, paralelismos matemáticos, fechamentos-resumo automáticos e didatismo. Skill do Kit NR Tech Adv (curso Dominando o Claude, NR Tecnologia · Roney Ribeiro)."
+description: "Protocolo para eliminar rastros de IA em qualquer texto jurídico produzido por advogado (petições, pareceres, recursos, memoriais, contestações, HC, MS, defesas, e-mails a clientes, contratos). Aciona-se SEMPRE que houver produção textual destinada a leitura humana profissional. Remove travessões longos e médios (— –), asteriscos, bullets decorativos (• ● ◦ ▪ → ✓), emojis, aspas curvas, reticências em caractere único, marcadores Markdown (# ## ###), setas e acentos graves de código (`). Elimina vocabulário-denúncia de IA (\"é crucial\", \"é importante ressaltar\", \"navegar pelas complexidades\", \"robusto\", \"multifacetado\", \"holístico\", \"meticuloso\"). Proíbe estrutura em listas no corpo argumentativo, paralelismos matemáticos, fechamentos-resumo automáticos e didatismo."
 ---
 
 # Skill: anti-ia
 
-**Kit NR Tech Adv — NR Tecnologia · Roney Ribeiro**
-Licença de uso livre. Base ética no art. 34, XIV do EOAB (dever de zelo).
-
-Adapte todos os pontos marcados com `[adapte aqui]` à realidade do seu escritório.
+Adapte os pontos marcados com `[adapte aqui]` à realidade do seu escritório.
 
 ---
 
 ## OBJETIVO
 
-Garantir que **nenhum texto jurídico produzido com auxílio de i.a.** carregue marcas tipográficas, lexicais ou estruturais típicas de saída de modelo. O produto final deve ser **indistinguível** de peça redigida manualmente por advogado experiente.
+Garantir que **nenhum texto jurídico produzido com auxílio de i.a.** carregue marcas tipográficas, lexicais ou estruturais típicas de saída de modelo. O texto final deve ter acabamento profissional, sem marcas de formatação de chat. A autoria intelectual e a responsabilidade continuam do advogado, que observa as normas sobre transparência no uso de IA aplicáveis ao caso.
 
 Aplica-se a: petições iniciais, contestações, recursos (apelação, agravo, especial, extraordinário), embargos, HC, MS, memoriais, alegações finais, pareceres, contratos, e-mails formais a clientes e comunicações institucionais.
 
@@ -31,11 +28,11 @@ Se um trecho parece **"bem escrito demais, uniforme demais, explicativo demais"*
 Nunca usar, em hipótese alguma:
 
 - **Travessão longo** (`—` em-dash) → substituir por vírgula, ponto, ponto e vírgula, ou reescrever.
-- **Travessão médio** (`–` en-dash) → mesmo tratamento. Exceção única: numeração de inciso legal (`I –`, `II –`) quando reproduzida de texto legal.
+- **Travessão médio** (`–` en-dash) → mesmo tratamento. Exceções: numeração de inciso legal (`I –`, `II –`) reproduzida de texto legal, e os elementos fixos do design system da skill `peticao` (numeração de tópicos `1 —`, paginação e separadores de rodapé).
 - **Asteriscos** (`*`, `**`) para ênfase → usar negrito nativo do Word (bold do estilo) ou reescrever.
-- **Bullets decorativos** (`•`, `●`, `◦`, `▪`, `→`, `✓`, `➤`) → converter em prosa corrida ou alíneas jurídicas (`a)`, `b)`, `c)`).
+- **Bullets decorativos** (`•`, `●`, `◦`, `▪`, `→`, `✓`, `➤`) → converter em prosa corrida ou alíneas jurídicas (`a)`, `b)`, `c)`). Exceção: separadores do cabeçalho e do rodapé do escritório.
 - **Emojis** de qualquer natureza.
-- **Aspas curvas** (`"` `"` `'` `'`) → usar aspas retas (`"` `'`) ou angulares (`«` `»`) conforme padrão da peça.
+- **Aspas curvas** (`“` `”` `‘` `’`) → usar aspas retas (`"` `'`) ou angulares (`«` `»`) conforme padrão da peça.
 - **Reticências em caractere único** (`…`) → usar três pontos separados (`...`).
 - **Setas** (`→`, `⇒`, `↔`, `⟶`) → reescrever em prosa.
 - **Marcadores Markdown** (`#`, `##`, `###`, `>`, `---`) → usar estilos nativos do Word (Título 1, Título 2, citação recuada).
@@ -95,8 +92,8 @@ Rodar Find & Replace sobre o texto (o Claude pode fazer a varredura direto no te
 | `•`, `●`, `◦`, `▪` | converter em prosa ou alínea `a)`, `b)` |
 | `→`, `⇒` | reescrever |
 | `…` | `...` |
-| `"` `"` | `"` `"` |
-| `'` `'` | `'` `'` |
+| `“` `”` | `"` `"` |
+| `‘` `’` | `'` `'` |
 | `# `, `## `, `### ` | aplicar estilo de título nativo |
 | `` ` `` | remover |
 
@@ -161,10 +158,10 @@ A peça só é entregue quando:
 - Ritmo variado entre parágrafos.
 - Fechamentos sem resumo redundante.
 
-**Falha em qualquer item da Seção 1 obriga refazer a peça inteira.**
+**Qualquer falha da Seção 1 deve ser corrigida antes da entrega.**
 
 ---
 
 ## FUNDAMENTO ÉTICO
 
-Art. 34, XIV do Estatuto da OAB (Lei 8.906/1994) — dever de zelo profissional e de manutenção da dignidade da advocacia. Peça com rastro visível de i.a. compromete a percepção de zelo e a autoria intelectual da tese. A limpeza tipográfica e lexical é parte do dever profissional, não estética opcional.
+Código de Ética e Disciplina da OAB, art. 2º, parágrafo único: dever de zelo e de preservar a dignidade da profissão. Peça com rastro visível de i.a. compromete a percepção de zelo e a autoria intelectual da tese. A limpeza tipográfica e lexical é parte do dever profissional, não estética opcional.

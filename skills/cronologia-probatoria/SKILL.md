@@ -6,19 +6,17 @@ description: >
   documentação empresarial). Cada entrada da linha do tempo é ancorada em
   documento, folha e trecho literal. Produz também mapa de padrões e
   divergências, matriz de força probatória, mapa de testemunhas e seção
-  separada de lacunas probatórias. Use SEMPRE que o pedido envolver
-  "monta a cronologia", "linha do tempo do caso", "organiza os fatos",
-  "analisa esses documentos", "o que os autos mostram", "prepara memorial
-  com histórico", "levanta as inconsistências", "quem devo ouvir",
-  "prepara a instrução", "análise de caso volumoso". Cobre criminal
+  separada de lacunas probatórias, entregue em .docx. Use quando o pedido
+  envolver "monta a cronologia", "linha do tempo do caso", "organiza os
+  fatos", "prepara memorial com histórico", "quem devo ouvir", "prepara a
+  instrução", "análise de caso volumoso". Para um mapeamento rápido em
+  Markdown de uma pasta autos/, use mapa-de-provas. Cobre criminal
   (inclusive júri), ambiental federal (IBAMA/ICMBio, DOF/SISDOF/SINAFLOR),
   cível, trabalhista, previdenciário e tributário. Aciona obrigatoriamente
   anti-alucinacao e entrega o produto final pelo padrão peticao.
 ---
 
 # Cronologia Probatória
-
-Kit NR Tech Adv — NR Tecnologia · Roney Ribeiro.
 
 Skill de análise. Não redige tese. Organiza fato documentado para que a tese
 seja construída em cima de chão firme.

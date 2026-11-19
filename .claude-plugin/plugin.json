@@ -1,7 +1,8 @@
 {
   "name": "kit-nr-tech-adv",
-  "version": "1.0.6",
-  "description": "Kit NR Tech Adv: as skills jurídicas do curso Dominando o Claude num único plugin. Anti-alucinação, anti-IA, Alma Jurídica, cronologia probatória, mapa de provas, petição em .docx e protocolo.",
+  "displayName": "Kit NR Tech Adv",
+  "version": "1.1.0",
+  "description": "Skills para advogados brasileiros: verificação de citações em fonte oficial, limpeza de rastros de IA, perfil de voz do advogado, cronologia probatória, mapa de provas, petição em .docx e auditoria antes do protocolo.",
   "author": {
     "name": "NR Tecnologia · Roney Ribeiro"
   },
@@ -12,7 +13,8 @@
     "peticao",
     "anti-alucinacao",
     "alma-juridica",
-    "dominando-o-claude"
+    "direito-brasileiro"
   ],
-  "homepage": "https://curso.tribujus.com.br"
+  "homepage": "https://github.com/nr-tecnologia/kit-nr-tech-adv",
+  "repository": "https://github.com/nr-tecnologia/kit-nr-tech-adv"
 }

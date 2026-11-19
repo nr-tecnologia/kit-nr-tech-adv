@@ -9,12 +9,13 @@ description: >
   trabalhista, previdenciário e federal. Use quando pedir petição, inicial,
   contestação, recurso, memorial, alegações finais, contrarrazões, HC, MS, defesa
   ou parecer: "faz uma inicial de X", "monta a contestação do caso Y",
-  "prepara o recurso de Z", "rascunha a peça sobre X".
+  "prepara o recurso de Z", "rascunha a peça sobre X". Para o fluxo completo
+  até o protocolo (prazo, leitura dos autos e auditoria), use protocolo.
 ---
 
 # Petição — Gerador de Peças Jurídicas
 
-Padrão visual testado em peças reais. Kit NR Tech Adv · NR Tecnologia · Roney Ribeiro.
+Monta a peça e cuida do formato. Para o fluxo completo até o protocolo, use a skill `protocolo`.
 
 ---
 
@@ -22,9 +23,11 @@ Padrão visual testado em peças reais. Kit NR Tech Adv · NR Tecnologia · Rone
 
 1. `references/design-system.md` — **fonte da verdade visual**, com todos os
    valores em DXA. Não improvisar medidas.
-2. `references/protocolo-verificacao.md` — leitura dos autos, TribuJus, citações.
+2. `references/protocolo-verificacao.md` — leitura dos autos, pesquisa de jurisprudência, citações.
 3. `references/estruturas-juridicas.md` — endereçamentos e esqueletos por área.
 4. Skill `anti-alucinacao`.
+5. Se houver `ALMA-*/ALMA.md`, `VOZ.md` e `MEMORIA.md` na pasta (skill `alma-juridica`),
+   ler e seguir a voz do advogado. Em conflito, `MEMORIA.md` prevalece.
 
 ---
 
@@ -33,9 +36,9 @@ Padrão visual testado em peças reais. Kit NR Tech Adv · NR Tecnologia · Rone
 ```
 ler autos (INTEIROS, inclusive últimas páginas)
    ↓
-TribuJus (se conectado): tribunal do caso + TRF/TRT da região + STJ  →  jurimetria
+pesquisa de jurisprudência: conector (ex.: TribuJus), se houver; senão, fontes oficiais
    ↓
-RESUMO ANALÍTICO com probabilidade de êxito e derrota
+RESUMO ANALÍTICO: teses, riscos e, se houver jurimetria, taxa histórica do recorte
    ↓
 aguardar aprovação          ← nunca redigir antes disso
    ↓
@@ -44,9 +47,11 @@ montar o .docx (biblioteca docx)  →  PDF  →  conferir página a página
 entregar + listar julgados para conferência + apontar o que ficou de fora
 ```
 
-**Análise antes da peça é regra, não formalidade.** Entregar
-estimativa de êxito calculada a partir de dados reais do TribuJus, com os avisos
-que o próprio sistema devolver.
+**Análise antes da peça é regra, não formalidade.** Se houver conector de
+jurimetria (ex.: TribuJus), informar a taxa histórica do recorte com a amostra e
+os avisos que o sistema devolver, nunca como probabilidade do caso concreto. Sem
+conector, pesquisar nas fontes oficiais dos tribunais e não apresentar
+percentual de êxito.
 
 ---
 
@@ -139,7 +144,7 @@ Justificar bloco curto estica as palavras e denuncia acabamento ruim. Abaixo de
 
 17. Servem a **dados e jurisprudência** — nunca a argumento em prosa.
 18. Um callout por tópico, no máximo. Nunca dois gráficos seguidos.
-19. `gap()` antes e depois de todo elemento gráfico.
+19. Espaçamento antes e depois de todo elemento gráfico.
 20. Cronologia rende quando há um marco ausente ou uma distância temporal que
     fala por si. Cards de KPI rendem quando a mesma grandeza aparece com
     valores divergentes nos autos.
@@ -149,7 +154,7 @@ Justificar bloco curto estica as palavras e denuncia acabamento ruim. Abaixo de
 ## Dados do escritório (escritorio.json)
 
 Na primeira peça, perguntar os dados ao advogado e salvar `escritorio.json` na
-pasta do caso (ou apontar `NR_ESCRITORIO` para um arquivo fixo). Modelo em
+pasta do caso. Modelo em
 `escritorio.exemplo.json`:
 
 ```json
@@ -165,5 +170,5 @@ pasta do caso (ou apontar `NR_ESCRITORIO` para um arquivo fixo). Modelo em
 
 Sem `logo`, o header sai com o nome do escritório em caixa alta. Sem arquivo,
 a peça sai com os dados fictícios do exemplo: **nunca protocolar assim**.
-`NR.assinaturas()` assina todos os advogados da lista; `NR.assinatura(nome, oab, true)`
-para peça individual.
+A função de assinatura do `gerar.js` percorre `advogados` do escritorio.json
+e assina todos; para peça individual, usar só o advogado indicado.
