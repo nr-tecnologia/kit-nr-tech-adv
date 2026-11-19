@@ -56,6 +56,10 @@ O `logo` é opcional. Se não criar o arquivo, o Claude pergunta na primeira pe�
 - Taxa histórica de julgamento não é probabilidade do caso concreto.
 - O Claude rascunha; quem revisa, assina e protocola é você.
 
+## Privacidade
+
+Veja [PRIVACY.md](PRIVACY.md).
+
 ## Licença
 
 CC BY-NC 4.0 (veja `LICENSE`): use, adapte e compartilhe com crédito; revenda não é permitida.
