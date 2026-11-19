@@ -39,7 +39,7 @@ RESUMO ANALÍTICO com probabilidade de êxito e derrota
    ↓
 aguardar aprovação          ← nunca redigir antes disso
    ↓
-montar com peca.js  →  fix_docx.py  →  PDF  →  conferir página a página
+montar o .docx (biblioteca docx)  →  PDF  →  conferir página a página
    ↓
 entregar + listar julgados para conferência + apontar o que ficou de fora
 ```
@@ -52,88 +52,45 @@ que o próprio sistema devolver.
 
 ## Montagem
 
-```js
-const NR = require("<pasta-desta-skill>/scripts/peca.js");   // lê ./escritorio.json
-const b = [];
+O Claude escreve, na pasta do caso, um `gerar.js` com a biblioteca `docx` do
+npm (`npm i docx`) e monta a peça seguindo **exatamente** os valores de
+`references/design-system.md` (página, fontes, cores, espaçamentos, header,
+footer e cada componente). Dados do escritório vêm do `escritorio.json`.
+Não improvisar medidas: tudo que não estiver no design system fica de fora.
 
-b.push(NR.enderecamento("AO JUÍZO DA ..."));
-b.push(NR.ref("Autos n.º ... — Classe"));       // sai em CAIXA ALTA
-b.push(NR.titulo("NOME DA PEÇA"));
-b.push(NR.subtitulo("objeto — parte"));
-b.push(NR.gap());
-b.push(NR.resumo([
-  { label: "A CONTROVÉRSIA", texto: "..." },
-  { label: "A TESE",         texto: "..." },
-  { label: "O PEDIDO",       texto: "..." },
-]));
-b.push(NR.gap());
+### Componentes disponíveis
 
-b.push(NR.topico("1 — TÍTULO DESCRITIVO DO TÓPICO"));
-b.push(NR.p("Texto com **negrito** e *itálico* inline."));
-b.push(NR.gap());
-b.push(NR.callout("RÓTULO", "parágrafo 1", "parágrafo 2"));
-b.push(NR.gap());
+Implementar como funções no `gerar.js`, uma por componente do design system:
 
-b.push(NR.sub("2.1 — Subtópico"));
-b.push(NR.cronologia([{ data: "01/06/2023", evento: "...", glosa: "...", destaque: true }]));
-b.push(NR.julgado({ sigla: "TJ-XX", tese: "...", itens: ["..."], referencia: "(...)" }));
-b.push(...NR.barras([{ label: "...", valor: 26.07, exibicao: "26,074 m³", destaque: true }], "Fonte: ..."));
-b.push(NR.kpi([{ label: "...", valor: "...", destaque: true, grande: true }]));
-
-b.push(NR.topico("N — DOS PEDIDOS"));
-b.push(NR.p("Diante do exposto, requer:", { noIndent: true }));
-b.push(NR.item("a)", "..."));
-
-b.push(...NR.fecho());
-b.push(...NR.assinaturas());   // advogados do escritorio.json
-
-NR.build(b, { title: "...", description: "...", out: "peca.docx" });
-```
-
-### API
-
-| Função | Uso | Notas |
+| Componente | Uso | Notas |
 |---|---|---|
-| `enderecamento(t)` | Juízo/Tribunal destinatário | |
-| `ref(t, {caps})` | Linha de referência processual | caixa alta por padrão; `{caps:false}` desliga |
-| `titulo(t)` / `subtitulo(t)` | Nome da peça / objeto | |
-| `resumo([{label,texto}])` | Caixa-resumo de abertura | 2 ou 3 colunas |
-| `topico(t)` / `sub(t)` | `1 —` / `1.1 —` | justificados, entrelinha 1,5 |
-| `p(t, {noIndent})` | Corpo justificado | |
-| `item(marca, t)` | `a)` `b)` ou `(i)` `(ii)` | |
-| `callout(label, ...ps, {alignment})` | Destaque com barra navy | alinhamento automático |
-| `cronologia([...])` | Linha do tempo | `{data, evento, glosa, destaque}` |
-| `julgado({...})` | Caixa de jurisprudência | `{sigla, tese, itens, referencia}` |
-| `barras([...], fonte)` | Comparação visual | retorna **array** |
-| `kpi([...])` | Cards numéricos | `{label, valor, destaque, grande}` |
-| `fonte(t)` | Nota de fonte solta | |
-| `gap()` | Espaçador antes/depois de gráfico | |
-| `fecho()` / `assinaturas()` | Retornam **array** | `keepNext` já aplicado |
+| endereçamento | Juízo/Tribunal destinatário | |
+| referência | Linha de referência processual | caixa alta |
+| título / subtítulo | Nome da peça / objeto | |
+| caixa-resumo | Abertura com 2 ou 3 colunas | A CONTROVÉRSIA · A TESE · O PEDIDO |
+| tópico / subtópico | `1 —` / `1.1 —` | justificados, entrelinha 1,5 |
+| parágrafo | Corpo justificado | recuo de primeira linha |
+| item | `a)` `b)` ou `(i)` `(ii)` | |
+| callout | Destaque com barra navy | no máximo um por tópico |
+| cronologia | Linha do tempo | data, evento, glosa, destaque |
+| caixa de jurisprudência | Julgado conferido | sigla, tese, itens, referência |
+| barras | Comparação visual de valores | com nota de fonte |
+| cards de KPI | Números divergentes nos autos | |
+| fecho e assinaturas | Cidade/data e advogados do escritorio.json | manter juntos na mesma página |
 
-### Alinhamento automático
+### Alinhamento
 
-`autoAlign` decide justificado × esquerda por contagem de caracteres — justificar
-bloco curto estica as palavras e denuncia acabamento ruim. Limiares calibrados:
-`resumo` 150 · `callout` 400 · `julgado` 90. Para forçar, passar
-`{alignment: AlignmentType.LEFT}` ao `callout`.
+Justificar bloco curto estica as palavras e denuncia acabamento ruim. Abaixo de
+~150 caracteres (caixa-resumo), ~400 (callout) e ~90 (jurisprudência), alinhar
+à esquerda.
 
----
+### Acabamento
 
-## Pós-processamento — obrigatório
-
-```bash
-npm ls -g docx >/dev/null || npm i -g docx   # dependência única
-node gerar.js
-python3 <pasta-desta-skill>/scripts/fix_docx.py peca.docx
-soffice --headless --convert-to pdf peca.docx
-pdftoppm -jpeg -r 110 peca.pdf p          # conferir TODAS as páginas
-```
-
-`fix_docx.py` corrige o bug `.undefined` das imagens e grava os metadados do
-escritório (nome do escritorio.json). **Sem ele o logo pode não aparecer.**
-
-Conferir no PDF, página a página: quebras, tabelas mal alinhadas, texto
-encostado em filete, assinatura órfã, rótulo quebrando em duas linhas.
+- Logo: `ImageRun` com `type: "png"` (ou `"jpg"`), senão a imagem sai quebrada.
+- Metadados: `creator` e `lastModifiedBy` com o `nome` do escritorio.json.
+- Converter para PDF (`soffice --headless --convert-to pdf peca.docx`) e
+  conferir **todas** as páginas: quebras, tabelas mal alinhadas, texto
+  encostado em filete, assinatura órfã, rótulo quebrando em duas linhas.
 
 ---
 

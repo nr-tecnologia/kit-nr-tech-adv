@@ -45,9 +45,8 @@ Se não criar, o Claude pergunta na primeira peça. Sem o arquivo, a peça sai c
 ## O que o plugin executa e acessa
 
 - Não tem hooks nem servidor MCP próprio. Nada roda sozinho.
-- A skill `peticao` roda localmente `scripts/peca.js` (Node, biblioteca `docx` do npm) e `scripts/fix_docx.py` para gerar a peça. Tudo fica na pasta do caso.
-- A skill `anti-ia` roda localmente `limpar_rastros_ia.py` sobre o texto.
-- Nenhum script envia dados para a internet. Se você tiver o conector TribuJus (ou outra base de jurisprudência) instalado, as skills pedem ao Claude que confira os julgados por ele; sem conector, a conferência é na fonte oficial do tribunal.
+- O plugin não traz scripts. Para gerar o .docx, a skill `peticao` pede ao Claude que escreva um gerador na pasta do caso com a biblioteca `docx` do npm, seguindo o design system incluso. Tudo fica na pasta do caso.
+- Nada é enviado para a internet pelo plugin. Se você tiver o conector TribuJus (ou outra base de jurisprudência) instalado, as skills pedem ao Claude que confira os julgados por ele; sem conector, a conferência é na fonte oficial do tribunal.
 - Os documentos do caso são lidos só na sua sessão do Claude e não são guardados pelo plugin.
 
 ## Regras que valem para todo o kit

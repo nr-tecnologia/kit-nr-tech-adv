@@ -277,4 +277,4 @@ Referência de julgado é sempre à esquerda.
 - `cantSplit` em toda `TableRow` de elemento gráfico, para não quebrar entre páginas.
 - `keepNext` + `keepLines` em títulos e tópicos.
 - Metadados: sobrescrever `creator` e `lastModifiedBy` para
-  o `nome` do escritorio.json em `docProps/core.xml` (feito pelo `fix_docx.py`).
+  o `nome` do escritorio.json em `docProps/core.xml`.

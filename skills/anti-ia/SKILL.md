@@ -1,6 +1,6 @@
 ---
 name: anti-ia
-description: Protocolo para eliminar rastros de IA em qualquer texto jurídico produzido por advogado (petições, pareceres, recursos, memoriais, contestações, HC, MS, defesas, e-mails a clientes, contratos). Aciona-se SEMPRE que houver produção textual destinada a leitura humana profissional. Remove travessões longos e médios (— –), asteriscos, bullets decorativos (• ● ◦ ▪ → ✓), emojis, aspas curvas, reticências em caractere único, marcadores Markdown (# ## ###), setas e crases. Elimina vocabulário-denúncia de IA ("é crucial", "é importante ressaltar", "navegar pelas complexidades", "robusto", "multifacetado", "holístico", "meticuloso"). Proíbe estrutura em listas no corpo argumentativo, paralelismos matemáticos, fechamentos-resumo automáticos e didatismo. Skill do Kit NR Tech Adv (curso Dominando o Claude, NR Tecnologia · Roney Ribeiro).
+description: "Protocolo para eliminar rastros de IA em qualquer texto jurídico produzido por advogado (petições, pareceres, recursos, memoriais, contestações, HC, MS, defesas, e-mails a clientes, contratos). Aciona-se SEMPRE que houver produção textual destinada a leitura humana profissional. Remove travessões longos e médios (— –), asteriscos, bullets decorativos (• ● ◦ ▪ → ✓), emojis, aspas curvas, reticências em caractere único, marcadores Markdown (# ## ###), setas e crases. Elimina vocabulário-denúncia de IA (\"é crucial\", \"é importante ressaltar\", \"navegar pelas complexidades\", \"robusto\", \"multifacetado\", \"holístico\", \"meticuloso\"). Proíbe estrutura em listas no corpo argumentativo, paralelismos matemáticos, fechamentos-resumo automáticos e didatismo. Skill do Kit NR Tech Adv (curso Dominando o Claude, NR Tecnologia · Roney Ribeiro)."
 ---
 
 # Skill: anti-ia
@@ -84,7 +84,7 @@ Executar **nesta ordem** antes de salvar qualquer `.docx` ou entregar qualquer t
 
 ### Passo 1 — Varredura tipográfica automatizada
 
-Rodar Find & Replace (ou script `limpar_rastros_ia.py` incluso) sobre o texto:
+Rodar Find & Replace sobre o texto (o Claude pode fazer a varredura direto no texto ou no .docx):
 
 | Buscar | Substituir por |
 |---|---|
