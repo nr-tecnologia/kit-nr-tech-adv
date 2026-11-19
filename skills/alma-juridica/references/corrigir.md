@@ -1,12 +1,6 @@
----
-name: alma-corrigir
-description: Registra uma correção de voz feita pelo advogado como regra permanente no MEMORIA.md e ajusta a ALMA.md quando a correção contradiz algo escrito lá. Use quando o usuário digitar /alma-corrigir ou disser "isso não é minha voz", "eu nunca escreveria assim", "corrige minha alma", "anota que eu não uso X".
-argument-hint: "<o que está errado e como você realmente faz>"
----
+# Etapa Corrigir — Transformar correção em regra
 
-# /alma-corrigir — Transformar correção em regra
-
-1. Localize `ALMA-*/MEMORIA.md`. Se não existir, diga que a Alma ainda não foi gerada e indique `/alma-gerar`.
+1. Localize `ALMA-*/MEMORIA.md`. Se não existir, diga que a Alma ainda não foi gerada e indique a etapa Gerar ("gerar minha alma").
 2. Leia a correção do advogado (o argumento do comando, ou a mensagem anterior a ele se veio sem argumento). Se não estiver claro o que deve mudar, faça **uma** pergunta curta. Ex.: "A regra é nunca usar 'data venia', ou só não abrir parágrafo com ela?"
 3. Reescreva a correção como regra operacional, curta e verificável:
    - Ruim: "Ele não gostou do tom."

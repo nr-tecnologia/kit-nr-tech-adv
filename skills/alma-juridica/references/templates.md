@@ -90,7 +90,7 @@ Gerar uma seção para cada registro que ele marcou no aquecimento. Registro nã
 
 ## MEMORIA.md (regras aprendidas)
 
-Nasce quase vazio. Cresce com `/alma-corrigir`.
+Nasce quase vazio. Cresce com a etapa Corrigir.
 
 ```markdown
 # MEMÓRIA — <Nome>

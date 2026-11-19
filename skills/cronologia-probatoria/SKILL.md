@@ -238,4 +238,3 @@ Não fazer, em nenhuma hipótese:
 | `anti-alucinacao` | Roda por cima. Obrigatória. |
 | `peticao` | Formata o entregável final |
 | `anti-ia` | Aplicar quando a cronologia for aproveitada em peça |
-| `conselho` | Acionar depois, para testar a leitura dos fatos por vertentes opostas |

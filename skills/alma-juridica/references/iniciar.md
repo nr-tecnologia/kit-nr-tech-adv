@@ -1,9 +1,4 @@
----
-name: alma-iniciar
-description: Inicia a construção da Alma Jurídica do advogado conduzindo uma entrevista falada em 8 blocos (A a H) e salvando o progresso a cada bloco. Use quando o usuário digitar /alma-iniciar ou pedir para "construir minha alma", "capturar minha alma jurídica", "extrair meu estilo", "criar meu perfil autoral".
----
-
-# /alma-iniciar — Entrevistador da Alma Jurídica
+# Etapa Iniciar — Entrevistador da Alma Jurídica
 
 ## Arquitetura
 
@@ -14,7 +9,7 @@ Nunca confunda os dois nomes com o advogado. Aqui é **Alma**.
 
 ## Passo 1 — Pasta de trabalho
 
-Verifique se já existe uma pasta `ALMA-*/` com `entrevista-progresso.md` na pasta de trabalho. Se existir, não recomece: siga o skill `alma-continuar`.
+Verifique se já existe uma pasta `ALMA-*/` com `entrevista-progresso.md` na pasta de trabalho. Se existir, não recomece: siga a etapa **Continuar** (`${CLAUDE_PLUGIN_ROOT}/skills/alma-juridica/references/continuar.md`).
 
 Se não existir, pergunte o nome completo do advogado (pergunta aberta, uma linha) e crie:
 
@@ -26,7 +21,7 @@ ALMA-<Nome-Sobrenome>/
 
 ## Passo 2 — Aquecimento
 
-Faça as perguntas fechadas listadas em `${CLAUDE_PLUGIN_ROOT}/skills/alma-iniciar/references/roteiro-entrevista.md` (seção "Perguntas fechadas") em **um único** cartão AskUserQuestion. Se a ferramenta não existir nesta sessão, pergunte em texto simples.
+Faça as perguntas fechadas listadas em `${CLAUDE_PLUGIN_ROOT}/skills/alma-juridica/references/roteiro-entrevista.md` (seção "Perguntas fechadas") em **um único** cartão AskUserQuestion. Se a ferramenta não existir nesta sessão, pergunte em texto simples.
 
 Explique em até 3 linhas, antes de começar:
 - pode responder por voz, pelo microfone do app;
@@ -37,7 +32,7 @@ Peça que ele coloque as peças `.docx` em `pecas/` quando puder. Nunca use PDF 
 
 ## Passo 3 — Entrevista
 
-Leia `${CLAUDE_PLUGIN_ROOT}/skills/alma-iniciar/references/roteiro-entrevista.md` e siga as regras e os blocos A a H. A regra 3 (puxar o fio do que aparece de passagem) prevalece sobre a ordem dos blocos.
+Leia `${CLAUDE_PLUGIN_ROOT}/skills/alma-juridica/references/roteiro-entrevista.md` e siga as regras e os blocos A a H. A regra 3 (puxar o fio do que aparece de passagem) prevalece sobre a ordem dos blocos.
 
 ## Passo 4 — Salvar a cada bloco (obrigatório)
 
@@ -70,6 +65,6 @@ Nunca resuma a fala dentro de "Respostas": copie literal. Esse arquivo é a úni
 
 ## Passo 5 — Pausa ou fim
 
-- Se o modo for duas sessões e o bloco D acabou de fechar: salve, diga que a próxima parte começa com `/alma-continuar` e encerre.
-- Se ele pedir para parar em qualquer ponto: salve o bloco em andamento como parcial (`proximo_bloco` aponta para ele) e indique `/alma-continuar`.
-- Quando os 8 blocos estiverem concluídos: diga que a entrevista terminou e que o próximo passo é `/alma-gerar`.
+- Se o modo for duas sessões e o bloco D acabou de fechar: salve, diga que a próxima parte começa com a etapa Continuar ("continuar minha alma") e encerre.
+- Se ele pedir para parar em qualquer ponto: salve o bloco em andamento como parcial (`proximo_bloco` aponta para ele) e indique a etapa Continuar ("continuar minha alma").
+- Quando os 8 blocos estiverem concluídos: diga que a entrevista terminou e que o próximo passo é a etapa Gerar ("gerar minha alma").

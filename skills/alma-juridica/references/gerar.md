@@ -1,15 +1,10 @@
----
-name: alma-gerar
-description: Gera os três arquivos da Alma Jurídica (ALMA.md, VOZ.md, MEMORIA.md) cruzando a entrevista concluída com as peças autorais do advogado. Use quando o usuário digitar /alma-gerar ou pedir "gerar minha alma", "montar os arquivos da alma", "finalizar a alma".
----
-
-# /alma-gerar — Gerar os arquivos da Alma
+# Etapa Gerar — Gerar os arquivos da Alma
 
 ## Passo 1 — Checagem (bloqueante)
 
 Leia `ALMA-*/entrevista-progresso.md`.
 
-- Se `blocos_concluidos` não tiver os 8 blocos (A a H): **não gere nada**. Diga quais blocos faltam e indique `/alma-continuar`. Uma Alma com seção vazia é pior que nenhuma Alma, porque o DNA Jurídico vai preencher o vazio com texto genérico.
+- Se `blocos_concluidos` não tiver os 8 blocos (A a H): **não gere nada**. Diga quais blocos faltam e indique a etapa Continuar ("continuar minha alma"). Uma Alma com seção vazia é pior que nenhuma Alma, porque o DNA Jurídico vai preencher o vazio com texto genérico.
 - Se não houver nenhuma peça `.docx` em `ALMA-*/pecas/`: avise que as seções 8 e 11 sairão como `[a extrair das peças]` e pergunte se ele quer gerar assim mesmo ou colocar as peças antes. Respeite a resposta.
 - Se houver apenas PDFs na pasta: diga que PDF não serve como base de extração e peça a versão `.docx`.
 
@@ -19,7 +14,7 @@ Se existir `ALMA-*/analise-corpus.md` e ela cobrir todas as peças da pasta, use
 
 ## Passo 3 — Gerar
 
-Leia `${CLAUDE_PLUGIN_ROOT}/skills/alma-iniciar/references/templates.md` e escreva, dentro de `ALMA-<Nome>/`:
+Leia `${CLAUDE_PLUGIN_ROOT}/skills/alma-juridica/references/templates.md` e escreva, dentro de `ALMA-<Nome>/`:
 
 - `ALMA.md` — 12 seções, nessa ordem.
 - `VOZ.md` — só os registros que ele marcou no aquecimento, mais "O que atravessa todos os registros".
@@ -33,4 +28,4 @@ Regras de geração:
 
 ## Passo 4 — Entregar
 
-Diga em até 4 linhas: onde os arquivos estão, quais seções ficaram com `[a verificar]` ou `[a extrair das peças]`, e que o próximo passo é ler a ALMA.md e usar `/alma-corrigir` para tudo que não soar como ele.
+Diga em até 4 linhas: onde os arquivos estão, quais seções ficaram com `[a verificar]` ou `[a extrair das peças]`, e que o próximo passo é ler a ALMA.md e usar a etapa Corrigir ("isso não é minha voz") para tudo que não soar como ele.

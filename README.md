@@ -16,12 +16,11 @@ Kit de skills para advogados brasileiros: protege contra jurisprudência inventa
 |---|---|
 | `anti-alucinacao` | Proíbe citação inventada. Toda jurisprudência, súmula, lei ou número de processo precisa de fonte oficial verificada. |
 | `anti-ia` | Tira os rastros de IA do texto (travessões, bullets, emojis, aspas curvas, vícios de estilo) antes de assinar. |
-| `alma-iniciar` · `alma-continuar` · `alma-gerar` · `alma-corrigir` | Alma Jurídica: entrevista em 8 blocos + suas peças para o Claude escrever com a sua voz. |
+| `alma-juridica` | Alma Jurídica: entrevista em 8 blocos + suas peças para o Claude escrever com a sua voz. |
 | `cronologia-probatoria` | Linha do tempo dos autos com documento, folha e trecho literal em cada entrada. |
 | `mapa-de-provas` | Cruza fatos alegados com as provas que existem (e as que faltam). |
 | `peticao` | Gera a peça em .docx no padrão visual do kit (Palatino, navy/teal, caixa-resumo, callouts, cronologia, KPIs). |
 | `protocolo` | Do PDF dos autos até a peça pronta para revisão: prazo, análise, redação e auditoria. |
-| `conselho` | Analisa a questão por vertentes diferentes antes de decidir a tese. |
 
 Agente incluído: `extrator-corpus` (lê suas peças e extrai padrões de voz para a Alma Jurídica).
 

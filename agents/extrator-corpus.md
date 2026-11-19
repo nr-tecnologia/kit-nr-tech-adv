@@ -1,7 +1,7 @@
 ---
 name: extrator-corpus
 description: |
-  Lê as peças autorais .docx do advogado e extrai padrões de voz escrita com trecho literal de prova, gravando o resultado em analise-corpus.md. Use em segundo plano durante a entrevista da Alma Jurídica, ou antes de /alma-gerar quando a análise ainda não cobre todas as peças.
+  Lê as peças autorais .docx do advogado e extrai padrões de voz escrita com trecho literal de prova, gravando o resultado em analise-corpus.md. Use em segundo plano durante a entrevista da Alma Jurídica, ou antes de a etapa Gerar ("gerar minha alma") quando a análise ainda não cobre todas as peças.
 
   <example>
   Contexto: o advogado colocou 4 peças em ALMA-Joana-Lima/pecas/ e está no bloco B da entrevista.
@@ -9,7 +9,7 @@ description: |
   </example>
 
   <example>
-  Contexto: o usuário rodou /alma-gerar e não existe analise-corpus.md.
+  Contexto: o usuário rodou a etapa Gerar ("gerar minha alma") e não existe analise-corpus.md.
   assistant: "Antes de gerar, preciso da análise das peças. Disparando o extrator-corpus."
   </example>
 tools: Read, Write, Bash, Glob
